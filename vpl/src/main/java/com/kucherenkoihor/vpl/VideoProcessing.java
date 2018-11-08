@@ -8,18 +8,22 @@ package com.kucherenkoihor.vpl;
 public class VideoProcessing {
 
     static {
+        System.loadLibrary("avutil-55");
+        System.loadLibrary("swresample-2");
+        System.loadLibrary("avcodec-57");
+        System.loadLibrary("avformat-55");
         System.loadLibrary("vpl");
     }
 
     public native int getDuration(String input) throws Exception;
 
-    public native int remux(String input, String output) throws Exception;
+    public native void remux(String input, String output) throws Exception;
 
-    public native int mergeAudioWithVideoWithoutTranscoding(String inputV, String inputA, String output) throws Exception;
+    public native void mergeAudioWithVideoWithoutTranscoding(String inputV, String inputA, String output) throws Exception;
 
-    public native int trim(String input, String output, double start, double end) throws Exception;
+    public native void trim(String input, String output, double start, double end) throws Exception;
 
-    public native int rotateDisplayMatrix(String input, String output, double rotation) throws Exception;
+    public native void rotateDisplayMatrix(String input, String output, double rotation) throws Exception;
 
-    public native int speedOfVideo(String input, String output, int coefficient) throws Exception;
+    public native void speedOfVideo(String input, String output, int coefficient) throws Exception;
 }
